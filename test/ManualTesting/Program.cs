@@ -14,8 +14,9 @@ public class Program
 
             try
             {
-                Console.WriteLine($"Left child encoding:  \"{input.GetLeftChildEncoding()}\"");
-                Console.WriteLine($"Right child encoding: \"{input.GetRightChildEncoding()}\"\n");
+                //Console.WriteLine($"Left child encoding:  \"{input.GetLeftChildEncoding()}\"");
+                //Console.WriteLine($"Right child encoding: \"{input.GetRightChildEncoding()}\"\n");
+
                 Node? root = input.ToBinaryTree();
 
                 if (root is null)
