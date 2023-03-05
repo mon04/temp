@@ -26,7 +26,7 @@ public static class Parsing
             var rightChildEncoding = GetRightChildEncoding(encoding);
 
             var leftChild = StringToBinaryTree(leftChildEncoding);
-            var rightChild = StringToBinaryTree(leftChildEncoding);
+            var rightChild = StringToBinaryTree(rightChildEncoding);
 
             return new Node(leftChild, rightChild);
         }
