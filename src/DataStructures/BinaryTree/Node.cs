@@ -42,7 +42,7 @@ namespace DataStructures.BinaryTree
             RightChild = rightChild;
         }
 
-        public List<Node> GetFringe()
+        public List<Node> GetFringeAsList()
         {
             var fringe = new List<Node>();
 
@@ -59,6 +59,28 @@ namespace DataStructures.BinaryTree
                 fringe.AddRange(RightChild.GetFringe());
 
             return fringe;
+        }
+
+        public IEnumerable<Node> GetFringe()
+        {
+            var fringe = new List<Node>();
+
+            if (IsLeaf)
+            {
+                yield return this;
+            }
+
+            if (HasLeftChild)
+            {
+                foreach (var node in LeftChild.GetFringe())
+                    yield return node;
+            }
+
+            if (HasRightChild)
+            {
+                foreach (var node in RightChild.GetFringe())
+                    yield return node;
+            }
         }
     }
 }
