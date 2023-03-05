@@ -36,7 +36,7 @@ public static class Parsing
         }
     }
 
-    public static string GetLeftChildEncoding(string parentEncoding)
+    private static string GetLeftChildEncoding(string parentEncoding)
     {
         Match rootNodeValidation = Regex.Match(parentEncoding, @"^\(.*\)$");
 
@@ -92,7 +92,7 @@ public static class Parsing
         return sb.ToString();
     }
 
-    public static string GetRightChildEncoding(string parentEncoding)
+    private static string GetRightChildEncoding(string parentEncoding)
     {
         Match rootNodeValidation = Regex.Match(parentEncoding, @"^\(.*\)$");
 
