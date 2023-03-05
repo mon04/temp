@@ -141,35 +141,6 @@ public static class Parsing
         }
         return sb.ToString();
     }
-
-    public static string GetSubstringToClosingParen(this string s,
-        int indexOfOpeningParen)
-    {
-        int depth = 1;
-        int i = indexOfOpeningParen + 1;
-
-        while (i < s.Length)
-        {
-            switch (s[i])
-            {
-                case ')':
-                {
-                    depth--;
-                    if (depth == 0)
-                        return s.Substring(indexOfOpeningParen, (i - indexOfOpeningParen) + 1);
-                    break;
-                }
-                case '(':
-                {
-                    depth++;
-                    break;
-                }
-            }
-            i++;
-        }
-
-        throw new ParseErrorException("Closing paren not found");
-    }
 }
 
 public class ParseErrorException : Exception
