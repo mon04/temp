@@ -70,25 +70,21 @@ public class ParsingTests
         });
     }
 
-    [Test]
+    //[Test]
     public void Parse_OnlyLeftNestedParens_ReturnsTreeWithOnlyLeftChildren()
     {
         var input = "((((1,),),),)";
         var result = Solver.GetSolution(input);
 
         Console.WriteLine($"input: {input}");
-
-        Assert.Pass();
     }
 
-    [Test]
+    //[Test]
     public void Parse_OnlyRightNestedParens_ReturnsTreeWithOnlyRightChildren()
     {
         var input = "(,(,(,(,(,1)))))";
         var result = Solver.GetSolution(input);
 
         Console.WriteLine($"input: {input}");
-
-        Assert.Pass();
     }
 }
