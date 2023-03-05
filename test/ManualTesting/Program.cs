@@ -29,12 +29,13 @@ public class Program
                 }
                 else
                 {
-                    Node visit = root;
-                    while(visit.HasLeftChild)
+                    var fringe = root.GetFringe();
+                    Console.Write("Fringe:");
+                    foreach(var node in fringe)
                     {
-                        visit = visit.LeftChild;
+                        Console.Write(" " + node.Label);
                     }
-                    Console.WriteLine($"Leftmost child: '{visit.Label}'");
+                    Console.WriteLine("\n");
                 }
             }
             catch(Exception e)
