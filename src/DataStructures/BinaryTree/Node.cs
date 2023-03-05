@@ -41,5 +41,24 @@ namespace DataStructures.BinaryTree
             LeftChild = leftChild;
             RightChild = rightChild;
         }
+
+        public List<Node> GetFringe()
+        {
+            var fringe = new List<Node>();
+
+            if (IsLeaf)
+            {
+                fringe.Add(this);
+                return fringe;
+            }
+
+            if(HasLeftChild)
+               fringe.AddRange(LeftChild.GetFringe());
+
+            if (HasRightChild)
+                fringe.AddRange(RightChild.GetFringe());
+
+            return fringe;
+        }
     }
 }
