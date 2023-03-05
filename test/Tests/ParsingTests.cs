@@ -11,7 +11,7 @@ public class ParsingTests
     }
 
     [Test]
-    public void Parse_EmptyString_ReturnsEmptyTree()
+    public void Parse_EmptyString_ReturnsNull()
     {
         var input = "";
         var result = Solver.GetSolution(input);
