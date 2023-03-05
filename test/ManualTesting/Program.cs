@@ -23,10 +23,6 @@ public class Program
                 {
                     Console.WriteLine("Resulting tree is null");
                 }
-                else if(root.IsLeaf)
-                {
-                    Console.WriteLine($"Root '{root.Label}' is a leaf");
-                }
                 else
                 {
                     Console.Write("Fringe:");
