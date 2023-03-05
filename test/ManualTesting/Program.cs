@@ -24,7 +24,7 @@ public class Program
                 }
                 else if(root.IsLeaf)
                 {
-                    Console.WriteLine($"Root {root.Label} is a leaf");
+                    Console.WriteLine($"Root '{root.Label}' is a leaf");
                 }
                 else
                 {
@@ -33,7 +33,7 @@ public class Program
                     {
                         visit = visit.LeftChild;
                     }
-                    Console.WriteLine($"Leftmost child: {visit.Label}");
+                    Console.WriteLine($"Leftmost child: '{visit.Label}'");
                 }
             }
             catch(Exception e)
