@@ -6,15 +6,16 @@ namespace Solution;
 public static class Solver
 {
 
-    public static Node? GetSolution(string input)
+    public static bool GetSolution(string encoding1, string encoding2)
     {
         try
         {
-            return input.ToBinaryTree();
+            //Node root1 = enco
+            return false;
         }
-        catch(Exception)
+        catch(Exception e)
         {
-            throw;
+            throw e;
         }
     }
 }

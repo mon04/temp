@@ -17,7 +17,7 @@ public class Program
                 //Console.WriteLine($"Left child encoding:  \"{input.GetLeftChildEncoding()}\"");
                 //Console.WriteLine($"Right child encoding: \"{input.GetRightChildEncoding()}\"\n");
 
-                Node? root = input.ToBinaryTree();
+                Node? root = Parsing.StringToBinaryTree(input);
 
                 if (root is null)
                 {
@@ -29,18 +29,15 @@ public class Program
                 }
                 else
                 {
-                    var fringe = root.GetFringe();
                     Console.Write("Fringe:");
-                    foreach(var node in fringe)
-                    {
-                        Console.Write(" " + node.Label);
-                    }
-                    Console.WriteLine("\n");
+                    foreach (var node in root.GetFringe())
+                        Console.Write($" {node.Label}");
                 }
             }
             catch(Exception e)
             {
                 Console.WriteLine($"Error: {e.Message}\n");
+                return;
             }
         }
     }

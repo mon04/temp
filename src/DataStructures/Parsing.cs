@@ -10,26 +10,33 @@ namespace DataStructures;
 
 public static class Parsing
 {
-    public static Node? ToBinaryTree(this string encoding)
+    public static Node? StringToBinaryTree(string encoding)
     {
-        if(string.IsNullOrEmpty(encoding))
-            return null;
+        try
+        {
+            if (string.IsNullOrEmpty(encoding))
+                return null;
 
-        var terminalMatch = Regex.Match(encoding, @"^[^\(\,\)]+$");
+            var terminalMatch = Regex.Match(encoding, @"^[^\(\,\)]+$");
 
-        if (terminalMatch.Success)
-            return new Node(terminalMatch.Value);
+            if (terminalMatch.Success)
+                return new Node(terminalMatch.Value);
 
-        var leftEncoding = encoding.GetLeftChildEncoding();
-        var rightEncoding = encoding.GetRightChildEncoding();
+            var leftChildEncoding = GetLeftChildEncoding(encoding);
+            var rightChildEncoding = GetRightChildEncoding(encoding);
 
-        var leftChild = leftEncoding.ToBinaryTree();
-        var rightChild = rightEncoding.ToBinaryTree();
+            var leftChild = StringToBinaryTree(leftChildEncoding);
+            var rightChild = StringToBinaryTree(leftChildEncoding);
 
-        return new Node(leftChild, rightChild);
+            return new Node(leftChild, rightChild);
+        }
+        catch(Exception e)
+        {
+            throw e;
+        }
     }
 
-    public static string GetLeftChildEncoding(this string parentEncoding)
+    public static string GetLeftChildEncoding(string parentEncoding)
     {
         Match rootNodeValidation = Regex.Match(parentEncoding, @"^\(.*\)$");
 
@@ -85,7 +92,7 @@ public static class Parsing
         return sb.ToString();
     }
 
-    public static string GetRightChildEncoding(this string parentEncoding)
+    public static string GetRightChildEncoding(string parentEncoding)
     {
         Match rootNodeValidation = Regex.Match(parentEncoding, @"^\(.*\)$");
 
