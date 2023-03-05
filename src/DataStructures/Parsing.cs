@@ -31,6 +31,14 @@ public static class Parsing
 
     public static string GetLeftChildEncoding(this string parentEncoding)
     {
+        Match rootNodeValidation = Regex.Match(parentEncoding, @"^\(.*\)$");
+
+        if (!rootNodeValidation.Success)
+            throw new ParseErrorException(
+                $"parentEncoding \"{parentEncoding}\" is not a valid root node encoding");
+
+        parentEncoding = parentEncoding[1..^1];
+
         var sb = new StringBuilder();
 
         int i = 0;
@@ -42,15 +50,13 @@ public static class Parsing
             {
                 case '(':
                 {
-                    if(depth > 0)
-                        sb.Append('(');
+                    sb.Append('(');
                     depth++;
                     break;
                 }
                 case ')':
                 {
-                    if (depth > 0)
-                        sb.Append(')');
+                    sb.Append(')');
                     depth--;
                     if (depth < 0)
                     {
@@ -75,11 +81,20 @@ public static class Parsing
             }
             i++;
         }
+        Console.WriteLine("Didnt find parent comma");
         return sb.ToString();
     }
 
     public static string GetRightChildEncoding(this string parentEncoding)
     {
+        Match rootNodeValidation = Regex.Match(parentEncoding, @"^\(.*\)$");
+
+        if (!rootNodeValidation.Success)
+            throw new ParseErrorException(
+                $"parentEncoding \"{parentEncoding}\" is not a valid root node encoding");
+
+        parentEncoding = parentEncoding[1..^1];
+
         var sb = new StringBuilder();
 
         int i = parentEncoding.Length - 1;
@@ -91,15 +106,13 @@ public static class Parsing
             {
                 case ')':
                 {
-                    if(depth > 0)
-                        sb.Insert(0, ')');
+                    sb.Insert(0, ')');
                     depth++; 
                     break;
                 }
                 case '(':
                 {
-                    if (depth > 0)
-                        sb.Insert(0, '(');
+                    sb.Insert(0, '(');
                     depth--;
                     break;
                 }
