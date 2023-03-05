@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -81,6 +82,22 @@ namespace DataStructures.BinaryTree
                 foreach (var node in RightChild.GetFringe())
                     yield return node;
             }
+        }
+    }
+
+    public class NodeLabelEqualityComparer : IEqualityComparer<Node>
+    {
+        public bool Equals(Node? x, Node? y)
+        {
+            if (x == null || y == null)
+                throw new Exception("Cannot compare labels of null nodes");
+
+            return x.Label == y.Label;
+        }
+
+        public int GetHashCode([DisallowNull] Node obj)
+        {
+            return obj.Label.GetHashCode();
         }
     }
 }
