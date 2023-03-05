@@ -64,8 +64,6 @@ namespace DataStructures.BinaryTree
 
         public IEnumerable<Node> GetFringe()
         {
-            var fringe = new List<Node>();
-
             if (IsLeaf)
             {
                 yield return this;
